@@ -161,7 +161,7 @@ void *alloc::refill(size_t n) {
 
   my_free_list = free_list + FREELIST_INDEX(n);
   result = (obj *)c;
-  *my_free_list = nex_obj = (obj *)(c + n)
+  *my_free_list = nex_obj = (obj *)(c + n);
   for (int i = 1; i < nobj - 1; i++) {
     cur_obj = nex_obj;
     nex_obj = (obj *)((char *)nex_obj + n);
