@@ -4,6 +4,7 @@
 #include "construct.h"
 #include "type_traits.h"
 #include <cstring>
+#include "algobase.h"
 
 namespace MyTinySTL {
 
@@ -35,7 +36,9 @@ inline ForwardIterator __uninitialized_copy(InputIterator first,
 template <class InputIterator, class ForwardIterator>
 inline ForwardIterator
 __uninitialized_copy_aux(InputIterator first, InputIterator last,
-                         ForwardIterator result, __true_type) {}
+                         ForwardIterator result, __true_type) {
+  return copy(first, last, result);
+}
 
 // false_type
 // [first, last) is the value list
@@ -82,7 +85,9 @@ inline void __uninitialized_fill(ForwardIterator first, ForwardIterator last,
 template <class ForwardIterator, class T>
 inline void __uninitialized_fill_aux(ForwardIterator first,
                                      ForwardIterator last, const T &x,
-                                     __true_type) {}
+                                     __true_type) {
+  fill(first, last, x);
+}
 
 template <class ForwardIterator, class T>
 inline void __uninitialized_fill_aux(ForwardIterator first,
@@ -112,7 +117,9 @@ inline ForwardIterator __uninitialized_fill_n(ForwardIterator first, Size n,
 
 template <class ForwardIterator, class Size, class T>
 inline ForwardIterator __uninitialized_fill_n_aux(ForwardIterator first, Size n,
-                                                  const T &x, __true_type) {}
+                                                  const T &x, __true_type) {
+  return fill_n(first, n, x);
+}
 
 template <class ForwardIterator, class Size, class T>
 inline ForwardIterator __uninitialized_fill_n_aux(ForwardIterator first, Size n,
