@@ -3,6 +3,11 @@
 
 #include "type_traits.h"
 
+#ifndef USE_NEW
+#define USE_NEW
+#include <new>
+#endif
+
 namespace MyTinySTL {
 template <class T> inline void construct(T *p) {
   // placement new
