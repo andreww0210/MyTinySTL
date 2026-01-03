@@ -3,7 +3,12 @@
 
 #include "construct.h"
 #include "type_traits.h"
+
+#ifndef USE_CSTRING
+#define USE_CSTRING
 #include <cstring>
+#endif
+
 #include "algobase.h"
 
 namespace MyTinySTL {
