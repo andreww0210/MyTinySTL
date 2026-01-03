@@ -1,10 +1,15 @@
 #ifndef ALLOC_H
 #define ALLOC_H
 
-#include <alloca.h>
-#include <cstddef>
+#ifndef USE_CSTDLIB
+#define USE_CSTDLIB
 #include <cstdlib>
+#endif
+
+#ifndef USE_IOSTREAM
+#define USE_IOSTREAM
 #include <iostream>
+#endif
 
 namespace MyTinySTL {
 #if !defined(_THROW_BAD_ALLOC)
